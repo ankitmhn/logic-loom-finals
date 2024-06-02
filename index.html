@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text Classification</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background-color: #f4f4f4;
+      }
+      .container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 80%;
+        max-width: 600px;
+      }
+      h1 {
+        margin-bottom: 20px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+      input[type="text"],
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      input[type="submit"] {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Text Classification</h1>
+      <form action="/predict" method="post">
+        <label for="article_id">Article ID:</label>
+        <input type="text" id="article_id" name="article_id" required /><br />
+        <label for="article_content">Article Content:</label>
+        <textarea
+          id="article_content"
+          name="article_content"
+          rows="10"
+          required
+        ></textarea
+        ><br />
+        <input type="submit" value="Submit" />
+      </form>
+      {% if prediction %}
+      <h2>Prediction Result</h2>
+      <p><strong>Article ID:</strong> {{ article_id }}</p>
+      <p><strong>Article Content:</strong> {{ article_content }}</p>
+      <p><strong>Predicted Type:</strong> {{ prediction }}</p>
+      {% endif %}
+    </div>
+  </body>
+</html>
